@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles3.css" />
+    <title>Scroll Split + Zoom Out</title>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="index1.html" class="logo" onclick="scrollToTop()">B M</a>
+      </div>
+      <div class="nav-right">
+        <div class="menu-icon" onclick="toggleMenu()">&#9632;</div>
+        <ul class="dropdown" id="dropdownMenu">
+          <li><a href="about1.html">ABOUT ME</a></li>
+          <li><a href="#works">WORKS</a></li>
+          <li><a href="contact.html">CONTACT ME</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container" id="splitContainer">
+      <div class="split left">
+        <div class="title">B</div>
+        <div class="bottom-info">
+          <div class="subtitle">B Meennakshy</div>
+          <p class="description">
+            Creative developer crafting aesthetic, interactive experiences for
+            the web.
+          </p>
+        </div>
+      </div>
+
+      <div class="split right">M</div>
+      <div class="content-under" id="zoomImage"></div>
+    </div>
+    <!-- About Me Section -->
+    <section class="about-me-section">
+      <div class="about-content">
+        <h3>About Myself</h3>
+        <p>
+          I'm B Meennakshy, a creative front-end developer passionate about
+          turning ideas into smooth, interactive user experiences. Simplicity
+          and elegance drive my work.
+        </p>
+      </div>
+    </section>
+    <section class="tools-marquee-section">
+      <div class="tools-marquee-wrapper">
+        <div class="tilted-wrapper" id="tiltContainer">
+          <div class="tools-marquee">
+            <div class="marquee-content">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Python</span>
+              <span>Framer</span>
+              <span>Java</span>
+              <span>C</span>
+              <span>MongoDB</span>
+              <span>Git</span>
+              <!-- Repeat if needed -->
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Python</span>
+              <span>Framer</span>
+              <span>Java</span>
+              <span>C</span>
+              <span>MongoDB</span>
+              <span>Git</span>
+              <!-- Repeat if needed -->
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Python</span>
+              <span>Framer</span>
+              <span>Java</span>
+              <span>C</span>
+              <span>MongoDB</span>
+              <span>Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="next-section">
+      <div>
+        <h2>About Me</h2>
+        <p>You’ve zoomed out from the image. Now scroll for more content.</p>
+      </div>
+    </div>
+
+    <script>
+      const zoomImage = document.getElementById("zoomImage");
+      const images = ["flower2.png", "fire3.png"];
+      let currentImage = 0;
+
+      // Scroll handler
+      window.addEventListener("scroll", function () {
+        const scrollY = window.scrollY;
+        const maxScroll = 500;
+        const left = document.querySelector(".split.left");
+        const right = document.querySelector(".split.right");
+
+        const progress = Math.min(scrollY / maxScroll, 1);
+
+        left.style.transform = `translateX(${-progress * 100}%)`;
+        right.style.transform = `translateX(${progress * 100}%)`;
+        zoomImage.style.transform = `scale(${1.05 - progress * 0.05})`;
+      });
+
+      // Handle image change on tap/click
+      function changeImage() {
+        currentImage = (currentImage + 1) % images.length;
+        zoomImage.style.backgroundImage = `url(${images[currentImage]})`;
+      }
+
+      //window.addEventListener("click", changeImage);
+      //window.addEventListener("touchstart", changeImage);
+
+      // Mobile menu toggle
+      function toggleMenu() {
+        const menu = document.getElementById("dropdownMenu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Marquee mobile touch pause/resume only
+      const marquee = document.querySelector(".tools-marquee");
+      const wrapper = document.querySelector(".tools-marquee-wrapper");
+
+      wrapper.addEventListener("touchstart", () => {
+        marquee.style.animationPlayState = "paused";
+      });
+
+      wrapper.addEventListener("touchend", () => {
+        marquee.style.animationPlayState = "running";
+      });
+
+      // Tilt on scroll
+      const tiltContainer = document.getElementById("tiltContainer");
+      window.addEventListener("scroll", () => {
+        const section = document.querySelector(".tools-marquee-section");
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < window.innerHeight * 0.3) {
+          tiltContainer.style.transform = "rotate(0deg)";
+        } else {
+          tiltContainer.style.transform = "rotate(-25deg)";
+        }
+      });
+    </script>
+  </body>
+</html>

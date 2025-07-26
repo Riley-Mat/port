@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles3.css" />
+    <title>Contact ME</title>
+    <style>
+      .contact-section {
+        background: #ffe6e3;
+        min-height: 100vh;
+      }
+
+      .contact-split {
+        display: flex;
+        flex-wrap: wrap;
+        color: #fe2726;
+        padding: 8rem 5%;
+        gap: 2rem;
+        font-family: "Dosis", sans-serif;
+      }
+
+      .contact-left {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-heading {
+        font-size: 5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: none;
+        text-align: left;
+      }
+
+      .contact-heading span {
+        color: #fe2726;
+      }
+
+      .contact-right {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .contact-description {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 400px;
+        margin-inline: auto;
+        line-height: 1.6;
+      }
+
+      .contact-methods {
+        list-style: none;
+        padding: 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+        line-height: 2.4;
+      }
+
+      .contact-methods li {
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-methods h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .contact-methods a {
+        color: #fe2726;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .contact-methods a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background: #fe2726;
+        transition: width 0.3s ease;
+      }
+
+      .contact-methods a:hover::after {
+        width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .contact-split {
+          flex-direction: column;
+          padding: 5rem 2rem;
+          text-align: center;
+        }
+
+        .contact-heading {
+          font-size: 2.8rem;
+          text-align: center;
+        }
+
+        .contact-description {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="index1.html" class="logo" onclick="scrollToTop()">B M</a>
+      </div>
+      <div class="nav-right">
+        <div class="menu-icon" onclick="toggleMenu()">&#9632;</div>
+        <ul class="dropdown" id="dropdownMenu">
+          <li><a href="about1.html">ABOUT ME</a></li>
+          <li><a href="#works">WORKS</a></li>
+          <li><a href="contact.html">CONTACT ME</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contact Content -->
+    <section class="contact-section">
+      <div class="contact-split">
+        <div class="contact-left">
+          <h1 class="contact-heading">
+            I’D LOVE TO COLLABORATE<br />OR JUST CHAT — <br /><span
+              >REACH OUT</span
+            >
+          </h1>
+        </div>
+        <div class="contact-right">
+          <p class="contact-description">
+            Whether you have a project idea or just want to say hello, I’d be
+            happy to connect!
+          </p>
+          <ul class="contact-methods">
+            <li>
+              <h3>Email</h3>
+              <a href="mailto:bmeennakshy321@gmail.com"
+                >bmeennakshy321@gmail.com</a
+              >
+            </li>
+            <li>
+              <h3>Instagram</h3>
+              <a href="https://instagram.com/b_meennakshy" target="_blank"
+                >@b_meennakshy</a
+              >
+            </li>
+            <li>
+              <h3>LinkedIn</h3>
+              <a
+                href="https://www.linkedin.com/in/b-meennakshy-b941b3255"
+                target="_blank"
+                >b-meennakshy</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("dropdownMenu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>
